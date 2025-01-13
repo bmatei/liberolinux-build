@@ -2,7 +2,7 @@
 # A script to list version numbers of critical development tools
 
 LC_ALL=C
-PATH=/usr/bin:/bin
+PATH=/usr/bin:/bin:/usr/sbin
 EXIT_CODE=0
 
 bail() { 
@@ -68,6 +68,7 @@ ver_check Tar tar 1.22
 ver_check Texinfo texi2any 5.0
 ver_check Xz xz 5.0.0
 ver_check sudo sudo 1.0
+ver_check parted parted 3.5
 ver_kernel 4.14
 
 if mount | grep -q 'devpts on /dev/pts' && [ -e /dev/ptmx ]
