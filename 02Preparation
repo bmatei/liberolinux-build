@@ -138,6 +138,12 @@ if grep -qs '$LIBERO' /proc/mounts; then
     sudo umount -fv $LIBERO
 fi
 
+# Check if device exists
+if [ ! -b $DEVICE ]; then
+    echo "$DEVICE is not a block device"
+    exit 1
+fi
+
 # Create a new boot UEFI partition
 sudo parted $DEVICE mklabel gpt
 sudo parted $DEVICE mkpart primary fat32 1MiB 1GB
